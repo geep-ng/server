@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Transfer Completed</title>
+  <style type="text/css">
+    body {
+      margin: 0;
+      padding: 0;
+      min-width: 100%;
+      font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 16px;
+      background-color: #f5f7fa;
+      color: #333;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 0;
+      text-align: center;
+      color: #fff;
+    }
+    .email-wrapper {
+      max-width: 600px;
+      margin: 20px auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    .email-header {
+      background: linear-gradient(to right, #00897b, #00695c);
+      padding: 30px;
+      text-align: center;
+      color: #fff;
+    }
+    .email-body {
+      background: #fff;
+      padding: 30px;
+      border: 1px solid #e0e0e0;
+    }
+    .transaction-details {
+      margin-top: 20px;
+      border-top: 1px solid #eee;
+      padding-top: 15px;
+    }
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px dashed #eee;
+    }
+    .detail-row:last-child {
+      border-bottom: none;
+    }
+    .button {
+      display: block;
+      width: fit-content;
+      margin: 25px auto 0 auto;
+      padding: 12px 25px;
+      background: linear-gradient(to right, #00897b, #00695c);
+      color: #fff !important;
+      border-radius: 6px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 16px;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0, 137, 123, 0.3);
+      transition: all 0.3s ease;
+    }
+    .button:hover {
+      opacity: 0.9;
+    }
+    .footer-text {
+      font-size: 13px;
+      color: #888;
+      text-align: center;
+      padding: 20px;
+    }
+    @media only screen and (max-width: 600px) {
+      .email-body {
+        padding: 20px;
+      }
+      h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="email-wrapper">
+    <div class="email-header">
+      <h1>📦 Transfer Completed</h1>
+      <p style="margin-top: 10px;">Reference: <strong><%= reference %></strong></p>
+    </div>
+    <div class="email-body">
+      <p>Dear <%= senderEmail %>,</p>
+      <p>Your transfer has been successfully delivered to the receiver.</p>
+
+      <div class="transaction-details">
+        <div class="detail-row">
+          <span>Amount Sent:</span> <strong><%= amountPaid %> <%= sourceCurrency %></strong>
+        </div>
+        <div class="detail-row">
+          <span>Amount Received:</span> <strong><%= amountToReceive %> <%= receivingCurrency %></strong>
+        </div>
+        <div class="detail-row">
+          <span>Receiver:</span> <strong><%= receiverName %></strong>
+        </div>
+        <div class="detail-row">
+          <span>Account Number:</span> <strong><%= accountNumber %></strong>
+        </div>
+        <div class="detail-row">
+          <span>Date:</span> <strong><%= transferDate %></strong>
+        </div>
+      </div>
+
+      <a href="<%= dashboardLink %>" class="button">View Transaction</a>
+
+      <p style="margin-top: 30px; text-align: center; color: #555;">
+        Thank you for choosing <strong>CrossPay</strong> for your transfers.
+      </p>
+    </div>
+
+    <div class="footer-text">
+      &copy; <%= new Date().getFullYear() %> CrossPay. All rights reserved.<br>
+      <a href="<%= privacyLink %>" style="color: #888;">Privacy Policy</a> | <a href="<%= termsLink %>" style="color: #888;">Terms of Service</a>
+    </div>
+  </div>
+</body>
+</html>
